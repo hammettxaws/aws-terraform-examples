@@ -43,12 +43,6 @@ resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.routes.id
 }
 
-# enabled for validation
-data "aws_key_pair" "example" {
-  key_name           = "example"
-  include_public_key = true
-}
-
 resource "aws_security_group" "allow_ssh" {
   name   = "public web ssh"
   vpc_id = aws_vpc.main.id
@@ -70,6 +64,12 @@ resource "aws_vpc_security_group_egress_rule" "allow_all" {
   security_group_id = aws_security_group.allow_ssh.id
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = -1
+}
+
+# enabled for validation
+data "aws_key_pair" "example" {
+  key_name           = "example"
+  include_public_key = true
 }
 
 resource "aws_instance" "gold" {
