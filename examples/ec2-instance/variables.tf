@@ -3,9 +3,19 @@ variable "aws_region" {
   default     = "ap-southeast-2"
 }
 
+variable "key_name" {
+  description = "The EC2 key name to use. Must be available"
+  default     = "example"
+}
+
+variable "instance_type" {
+  description = "The instance type to use"
+  default = "t3.micro"
+}
+
 variable "project_name" {
   description = "Name of the project"
-  default     = "tfweb"
+  default     = "tfinstance"
 }
 
 variable "vpc_cidr" {
@@ -14,11 +24,6 @@ variable "vpc_cidr" {
 }
 
 variable "subnet_cidr_block" {
-  description = "Available cidr block for public subnets."
+  description = "Available CIDR block for public subnets."
   default     = "172.34.1.0/24"
-}
-
-variable "instance_type" {
-  description = "The instance type to use"
-  default = "t3.micro"
 }
